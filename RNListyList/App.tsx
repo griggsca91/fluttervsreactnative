@@ -29,36 +29,56 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import MapView from 'react-native-maps';
+import { Marker } from "react-native-maps";
 
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
+    flex: 1,
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const markers = data.data.map((v) => {
+    return   <Marker
+    key={v.address}
+    coordinate={{
+      latitude: Number(v.lat),
+      longitude: Number(v.long),
+    }}
+  />
+
+  })
+
   return (
-    <SafeAreaView style={backgroundStyle}>
-   <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <MapView
              style={styles.map}
 
              region={{
-              latitude: 37.78825,
-              longitude: -122.4324,
+              latitude: 38.698603,
+              longitude: -77.2136148,
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}
-     />
+     >
+      {markers}
+     </MapView>
       <ConstructionList />
-      </View>
     </SafeAreaView>
   );
 }
 
 function ConstructionList() {
       return (
+        <View
+        style={{
+         position: "absolute",
+         height: 200, 
+         bottom: 0,
+        }}
+        >
       <FlatList
               data={data.data}
               horizontal={true}
@@ -70,6 +90,7 @@ function ConstructionList() {
               keyExtractor={item => item.display_name}      
       >
       </FlatList>
+      </View>
       )
 }
 
@@ -83,7 +104,13 @@ function ConstructionItem({title, imgURL}: ConstrutionItemProps): JSX.Element {
   imgURL = imgURL ?? "https://geekflare.com/wp-content/uploads/2023/03/img-placeholder.png"
   
   return (
-    <View>
+    <View style={{
+      width: 200,
+      height: 150,
+      backgroundColor: "#ffffffff",
+      marginVertical: 8,
+      marginHorizontal: 16,  
+    }}>
       <Image
             style={styles.tinyLogo}
             source={{
@@ -118,8 +145,9 @@ const styles = StyleSheet.create({
   },
   container: {
     ...StyleSheet.absoluteFillObject,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
+    flex: 1, //the container will fill the whole screen.
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
   map: {
     ...StyleSheet.absoluteFillObject,

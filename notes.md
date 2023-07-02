@@ -22,3 +22,8 @@
   * react native
     * i know react and js more than flutter and dart, so I was much quicker at starting the project.  
   * flutter
+
+* JS vs Dart
+    * Dart
+    * JS/TS
+
