@@ -1,70 +1,91 @@
-[
-    {
-      "type": "building",
-      "status": "in-progress",
-      "lat": "38.698603",
-      "long": "-77.2136148",
-      "address": "9520 Richmond Highway, Lorton Virginia",
-      "display_name": "Lorton Community Center",
-      "estimate_completion_date": "Early 2023",
-      "funding": "$18,500,000",
-      "display_image": "https://www.fairfaxcounty.gov/publicworks/sites/publicworks/files/Assets/images/projects/Lorton%20CC-edit.png",
-      "url": "https://www.fairfaxcounty.gov/publicworks/capital-projects/lorton-community-center",
-      "description": "New one-story Community Center co-located with the Lorton Library with new playground and fitness areas, walking trails and outdoor recreation."
-    },
-    {
-      "tyoe": "stormwater",
-      "status": "in-progress",
-      "lat": "38.9084962",
-      "long": "-77.4829986",
-      "address": "Sully Rd, Virginia",
-      "display_name": "Schneider Branch Segment 1 (CU82-0002) at Sully Road Stream Restoration",
-      "estimate_completion_date": "July 2023",
-      "funding": "$1,262,000",
-      "url": "https://www.fairfaxcounty.gov/publicworks/capital-projects/schneider-branch-segment-1-cu82-0002-sully-road-stream-restoration",
-      "description": "restoration of approximately 1,041 linear feet of stream using natural channel design and riparian corridor enhancements for improved water quality. This project is in the Sully Magisterial District of Fairfax County, Virginia.",
-      "details": [
+{
+    "locations": [
         {
-          "type": "url",
-          "value": "https://www.fairfaxcounty.gov/publicworks/sites/publicworks/files/assets/documents/cap-quarterly-reports/sully.pdf"
-        }
-      ]
-    },
-    {
-      "type": "building",
-      "status": "in-progress",
-      "lat": "38.8534846",
-      "long": "-77.3734901",
-      "address": "4604 West Ox Rd, Fairfax, VA 22030",
-      "display_name": "Police Heliport",
-      "estimate_completion_date": "Spring 2023",
-      "funding": "$13,000,000",
-          "display_image": "https://www.fairfaxcounty.gov/publicworks/sites/publicworks/files/Assets/images/Capital%20Facilities/Police-Heliport.jpg",
-      "url": "https://www.fairfaxcounty.gov/publicworks/capital-projects/schneider-branch-segment-1-cu82-0002-sully-road-stream-restoration",
-      "description": "Demolition of existing heliport and construction of replacement facility on existing site, 4604 West Ox Road, Fairfax, Virginia, including a 23,000 SF structure with helicopter landing area and maintenance bays, aircraft fuel station, offices, and site improvements.",
-      "details": [
+            "type": "building",
+            "status": "in-progress",
+            "lat": "38.698603",
+            "long": "-77.2136148",
+            "address": "9520 Richmond Highway, Lorton Virginia",
+            "display_name": "Lorton Community Center",
+            "estimate_completion_date": "Early 2023",
+            "funding": "$18,500,000",
+            "image_url": "https://www.fairfaxcounty.gov/publicworks/sites/publicworks/files/Assets/images/projects/Lorton%20CC-edit.png",
+            "url": "https://www.fairfaxcounty.gov/publicworks/capital-projects/lorton-community-center",
+            "description": "New one-story Community Center co-located with the Lorton Library with new playground and fitness areas, walking trails and outdoor recreation."
+        },
         {
-          "type": "url",
-          "value": "https://www.fairfaxcounty.gov/publicworks/sites/publicworks/files/assets/documents/cap-quarterly-reports/sully.pdf"
-        }
-      ]
-    },
-    {
-      "type": "transportation",
-      "status": "in-progress",
-      "lat": "38.9507748",
-      "long": "-77.3388151",
-      "address": "Isaac Newton Square, Reston, VA 20190",
-      "display_name": "Wiehle Avenue at Washington and Old Dominion Trail",
-      "estimate_completion_date": "July 2024",
-      "funding": "$12,000,000",
-      "url": "https://www.fairfaxcounty.gov/publicworks/capital-projects/wiehle-avenue-at-washington-and-old-dominion-trail",
-      "description": "Construction of a new 16’ wide bicycle/pedestrian overpass spanning approximately 143 LF over Wiehle Avenue to replace the existing at-grade crossing, approximately 175 LF gravity retaining wall, 1,100 LF Mechanically Stabilized Earth (MSE) retaining wall, approximately 2,200 LF, 10 FT and 12 FT wide asphalt trail, concrete sidewalk, curb and combination curb and gutter, curb ramps, detectable warning surfaces, storm drains, storm drain structures, water main relocation, signal works at the intersection of Wiehle Avenue and Sunset Hills Road, signage works, milling, paving, pavement marking and other associated works.",
-      "details": [
+            "tyoe": "stormwater",
+            "status": "in-progress",
+            "lat": "38.9084962",
+            "long": "-77.4829986",
+            "address": "Sully Rd, Virginia",
+            "display_name": "Schneider Branch Segment 1 (CU82-0002) at Sully Road Stream Restoration",
+            "estimate_completion_date": "July 2023",
+            "funding": "$1,262,000",
+            "url": "https://www.fairfaxcounty.gov/publicworks/capital-projects/schneider-branch-segment-1-cu82-0002-sully-road-stream-restoration",
+            "description": "restoration of approximately 1,041 linear feet of stream using natural channel design and riparian corridor enhancements for improved water quality. This project is in the Sully Magisterial District of Fairfax County, Virginia.",
+            "details": [
+                {
+                    "type": "url",
+                    "value": "https://www.fairfaxcounty.gov/publicworks/sites/publicworks/files/assets/documents/cap-quarterly-reports/sully.pdf"
+                }
+            ]
+        },
         {
-          "type": "url",
-          "value": "https://www.fairfaxcounty.gov/transportation/sites/transportation/files/assets/documents/pdf/projects/wiehle%20pedestrian%20project%20information%20sheet_3.3.21.pdf"
+            "type": "building",
+            "status": "in-progress",
+            "lat": "38.8534846",
+            "long": "-77.3734901",
+            "address": "4604 West Ox Rd, Fairfax, VA 22030",
+            "display_name": "Police Heliport",
+            "estimate_completion_date": "Spring 2023",
+            "funding": "$13,000,000",
+            "image_url": "https://www.fairfaxcounty.gov/publicworks/sites/publicworks/files/Assets/images/Capital%20Facilities/Police-Heliport.jpg",
+            "url": "https://www.fairfaxcounty.gov/publicworks/capital-projects/schneider-branch-segment-1-cu82-0002-sully-road-stream-restoration",
+            "description": "Demolition of existing heliport and construction of replacement facility on existing site, 4604 West Ox Road, Fairfax, Virginia, including a 23,000 SF structure with helicopter landing area and maintenance bays, aircraft fuel station, offices, and site improvements.",
+            "details": [
+                {
+                    "type": "url",
+                    "value": "https://www.fairfaxcounty.gov/publicworks/sites/publicworks/files/assets/documents/cap-quarterly-reports/sully.pdf"
+                }
+            ]
+        },
+        {
+            "type": "transportation",
+            "status": "in-progress",
+            "lat": "38.9507748",
+            "long": "-77.3388151",
+            "address": "Isaac Newton Square, Reston, VA 20190",
+            "display_name": "Wiehle Avenue at Washington and Old Dominion Trail",
+            "estimate_completion_date": "July 2024",
+            "funding": "$12,000,000",
+            "url": "https://www.fairfaxcounty.gov/publicworks/capital-projects/wiehle-avenue-at-washington-and-old-dominion-trail",
+            "description": "Construction of a new 16’ wide bicycle/pedestrian overpass spanning approximately 143 LF over Wiehle Avenue to replace the existing at-grade crossing, approximately 175 LF gravity retaining wall, 1,100 LF Mechanically Stabilized Earth (MSE) retaining wall, approximately 2,200 LF, 10 FT and 12 FT wide asphalt trail, concrete sidewalk, curb and combination curb and gutter, curb ramps, detectable warning surfaces, storm drains, storm drain structures, water main relocation, signal works at the intersection of Wiehle Avenue and Sunset Hills Road, signage works, milling, paving, pavement marking and other associated works.",
+            "details": [
+                {
+                    "type": "url",
+                    "value": "https://www.fairfaxcounty.gov/transportation/sites/transportation/files/assets/documents/pdf/projects/wiehle%20pedestrian%20project%20information%20sheet_3.3.21.pdf"
+                }
+            ]
+        },
+        {
+            "type": "renovation",
+            "status": "finished",
+            "lat": "38.7420845",
+            "long": "-77.0917902",
+            "address": "7950 Audubon Avenue, Alexandria, VA, 22306",
+            "display_name": "Hybla Valley Community Center – Workforce Development",
+            "estimate_completion_date": "Early 2023",
+            "funding": "$3,000,000",
+            "url": "https://www.fairfaxcounty.gov/publicworks/capital-projects/hybla-valley-community-center-workforce-development",
+            "description": "This project entails the renovation of space to accommodate training opportunities in emerging technology fields, specialized equipment for skilled trades training, and job placement opportunities for residents",
+            "details": [
+                {
+                    "type": "url",
+                    "value": "https://www.fairfaxcounty.gov/familyservices/employment-and-training/wish"
+                }
+            ]
         }
-      ]
-    }
-  ]
+
+    ]
+}
