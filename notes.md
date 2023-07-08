@@ -34,5 +34,6 @@ Debugging
   React native
     - app keeps crashing on my everytime it tries to attach to the Chrome browser debugger.
     - https://www.npmjs.com/package/react-devtools works pretty great, but no logger or breakpoints
+    - keeps "destroying" my emulator
   flutter
     - no issues whatso every, all the devtools in one page

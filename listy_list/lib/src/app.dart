@@ -20,7 +20,7 @@ final _router = GoRouter(navigatorKey: _rootNavigatorKey, routes: [
                 onPressed: () => {
                       if (context.canPop()) {context.pop()}
                     }),
-            title: const Text('Maps Sample App'),
+            title: const Text('So much construction'),
             elevation: 2,
           ),
           body: child,

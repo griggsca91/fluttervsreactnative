@@ -61,26 +61,27 @@ class ConstructionCard extends StatelessWidget {
                 child: Row(
                   children: [
                     Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 5),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.network(imageURL),
-                              ],
-                            ))),
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [Image.network(imageURL)],
+                        ),
+                      ),
+                    ),
                     Expanded(
-                        flex: 2,
-                        child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(location.displayName),
-                                Text(location.address),
-                              ],
-                            ))),
+                      flex: 2,
+                      child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(location.displayName),
+                              Text(location.address),
+                            ],
+                          )),
+                    ),
                   ],
                 ),
               ),

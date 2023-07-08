@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+import { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -18,107 +18,63 @@ import {
   FlatList,
 } from 'react-native';
 
-import data from './data.json'
+import { ConstructionList } from './construction/list_view';
+import { ConstructionMap } from './construction/map_view';
+import { Location } from './construction/location';
+import { getLocations } from './construction/service';
+import { NavigationContainer, NavigationProp } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { DetailView } from './construction/detail';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-import MapView from 'react-native-maps';
-import { Marker } from "react-native-maps";
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    flex: 1,
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  const markers = data.data.map((v) => {
-    return   <Marker
-    key={v.address}
-    coordinate={{
-      latitude: Number(v.lat),
-      longitude: Number(v.long),
-    }}
-  />
-
-  })
 
   return (
-    <SafeAreaView style={styles.container}>
-      <MapView
-             style={styles.map}
-
-             region={{
-              latitude: 38.698603,
-              longitude: -77.2136148,
-              latitudeDelta: 0.015,
-              longitudeDelta: 0.0121,
-            }}
-     >
-      {markers}
-     </MapView>
-      <ConstructionList />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: "So much construction" }}
+        />
+        <Stack.Screen
+          name="Detail"
+          component={DetailView}
+          options={{ title: "So much construction" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-function ConstructionList() {
-      return (
-        <View
-        style={{
-         position: "absolute",
-         height: 200, 
-         bottom: 0,
-        }}
-        >
-      <FlatList
-              data={data.data}
-              horizontal={true}
-              renderItem={({item}) => <ConstructionItem 
-              title={item.display_name} 
-              imgURL={item.display_image}
-              />
-            }
-              keyExtractor={item => item.display_name}      
-      >
-      </FlatList>
-      </View>
-      )
-}
 
-type ConstrutionItemProps = {
-  title: string
-  imgURL?: string
-}
+type RootStackParamList = {
+  Home: undefined,
+  Detail: { location: Location }
+};
 
-function ConstructionItem({title, imgURL}: ConstrutionItemProps): JSX.Element {
-  
-  imgURL = imgURL ?? "https://geekflare.com/wp-content/uploads/2023/03/img-placeholder.png"
-  
+
+type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
+
+
+
+function HomeScreen({navigation}: HomeScreenProps) {
+  const [locations, setLocations] = useState([] as Location[])
+  useEffect(() => {
+    getLocations().then(locations => {
+      setLocations(locations);
+    });
+  }, [])
+
   return (
-    <View style={{
-      width: 200,
-      height: 150,
-      backgroundColor: "#ffffffff",
-      marginVertical: 8,
-      marginHorizontal: 16,  
-    }}>
-      <Image
-            style={styles.tinyLogo}
-            source={{
-              uri: imgURL,
-            }}
-      />
-      <Text>{title}</Text> 
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ConstructionMap locations={locations} />
+      <ConstructionList locations={locations} onClick={(location) => navigation.push("Detail", {location})} />
+    </SafeAreaView>
   )
 }
 
@@ -152,7 +108,7 @@ const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject,
   },
- 
+
 });
 
 export default App;
