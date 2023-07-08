@@ -5,6 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 import 'dart:convert';
+import 'package:go_router/go_router.dart';
 
 class ConstructionMap extends StatefulWidget {
   const ConstructionMap({super.key});
@@ -138,7 +139,7 @@ class ConstructionMapState extends State<ConstructionMap> {
             mapController.animateCamera(
                 CameraUpdate.newLatLng(LatLng(location.lat, location.long)))
           },
-          onItemClick: (location) => {},
+          onItemClick: (location) => context.push("/location"),
         ),
       ),
     ]);
