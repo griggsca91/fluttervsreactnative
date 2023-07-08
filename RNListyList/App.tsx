@@ -9,20 +9,14 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  Image,
   StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  FlatList,
 } from 'react-native';
 
 import { ConstructionList } from './construction/list_view';
 import { ConstructionMap } from './construction/map_view';
 import { Location } from './construction/location';
 import { getLocations } from './construction/service';
-import { NavigationContainer, NavigationProp } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { DetailView } from './construction/detail';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -60,9 +54,11 @@ type RootStackParamList = {
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-
-
-function HomeScreen({navigation}: HomeScreenProps) {
+function HomeScreen({ navigation }: HomeScreenProps) {
+  const [currentView, setCurrentView] = useState({
+    latitude: 38.698603,
+    longitude: -77.2136148,
+  })
   const [locations, setLocations] = useState([] as Location[])
   useEffect(() => {
     getLocations().then(locations => {
@@ -72,8 +68,17 @@ function HomeScreen({navigation}: HomeScreenProps) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ConstructionMap locations={locations} />
-      <ConstructionList locations={locations} onClick={(location) => navigation.push("Detail", {location})} />
+      <ConstructionMap locations={locations} goTo={currentView} />
+      <ConstructionList locations={locations}
+        onClick={(location) => navigation.push("Detail", { location })}
+        onLongPress={(l) => {
+          console.log("location long press", l )
+          setCurrentView({
+            latitude: Number(l.lat),
+            longitude: Number(l.long)
+          })
+        }}
+      />
     </SafeAreaView>
   )
 }

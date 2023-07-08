@@ -1,33 +1,13 @@
 import React from 'react';
-import type { PropsWithChildren } from 'react';
 import {
-    SafeAreaView,
-    ScrollView,
-    Image,
     StyleSheet,
-    Text,
-    useColorScheme,
     View,
     FlatList,
     TouchableOpacity,
-    Dimensions,
 } from 'react-native';
 
-import {
-    Colors,
-    DebugInstructions,
-    Header,
-    LearnMoreLinks,
-    ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-import MapView from 'react-native-maps';
-import { Marker } from "react-native-maps";
-
-import { ConstructionItem, CONSTRUCTION_ITEM_WIDTH } from './item';
+import { ConstructionItem } from './item';
 import { Location } from './location';
-const { width } = Dimensions.get('window');
-console.log(width - CONSTRUCTION_ITEM_WIDTH);
 
 const styles = StyleSheet.create({
     list: {
@@ -40,9 +20,10 @@ const styles = StyleSheet.create({
 type ConstructionListProps = {
     locations: Location[],
     onClick: (location: Location) => void,
+    onLongPress: (location: Location) => void,
 }
 
-export function ConstructionList({ locations, onClick }: ConstructionListProps) {
+export function ConstructionList({ locations, onClick, onLongPress }: ConstructionListProps) {
     return (
         <View
             style={styles.list}
@@ -55,14 +36,17 @@ export function ConstructionList({ locations, onClick }: ConstructionListProps) 
                 pagingEnabled
                 renderItem={function ({ item }) {
                     return (
-                        <TouchableOpacity onPress={() => onClick(item)}>
+                        <TouchableOpacity
+                            onLongPress={() => onLongPress(item)}
+                            onPress={() => onClick(item)}
+                        >
                             <ConstructionItem
                                 key={item.address}
                                 title={item.displayName}
                                 imgURL={item.displayImage}
                                 address={item.address}
                             />
-                        </TouchableOpacity>
+                       </TouchableOpacity>
                     )
                 }
                 }

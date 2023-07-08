@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
     StyleSheet,
 } from 'react-native';
 
-import MapView from 'react-native-maps';
+import MapView, { LatLng } from 'react-native-maps';
 import { Marker } from "react-native-maps";
 import { Location } from './location';
 
 
 type ConstructionMapProps = {
     locations: Location[],
+    goTo: LatLng,
 }
 
 
-export function ConstructionMap({ locations }: ConstructionMapProps) {
+export function ConstructionMap({ locations, goTo }: ConstructionMapProps) {
+    const map = useRef<MapView>(null);
     const markers = locations.map((v) => {
         return <Marker
             key={v.address}
@@ -22,14 +24,18 @@ export function ConstructionMap({ locations }: ConstructionMapProps) {
                 longitude: Number(v.long),
             }}
         />
-
     })
+    
     return (<MapView
         style={styles.map}
-
+        ref={map}
+        initialRegion={{
+            ...goTo,
+            latitudeDelta: 0.015,
+            longitudeDelta: 0.0121,
+        }}
         region={{
-            latitude: 38.698603,
-            longitude: -77.2136148,
+            ...goTo,
             latitudeDelta: 0.015,
             longitudeDelta: 0.0121,
         }}
