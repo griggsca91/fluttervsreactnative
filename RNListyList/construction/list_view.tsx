@@ -10,6 +10,7 @@ import {
     View,
     FlatList,
     TouchableOpacity,
+    Dimensions,
 } from 'react-native';
 
 import {
@@ -23,41 +24,17 @@ import {
 import MapView from 'react-native-maps';
 import { Marker } from "react-native-maps";
 
-import { ConstructionItem } from './item';
+import { ConstructionItem, CONSTRUCTION_ITEM_WIDTH } from './item';
 import { Location } from './location';
-
+const { width } = Dimensions.get('window');
+console.log(width - CONSTRUCTION_ITEM_WIDTH);
 
 const styles = StyleSheet.create({
-    sectionContainer: {
-        marginTop: 32,
-        paddingHorizontal: 24,
-    },
-    sectionTitle: {
-        fontSize: 24,
-        fontWeight: '600',
-    },
-    sectionDescription: {
-        marginTop: 8,
-        fontSize: 18,
-        fontWeight: '400',
-    },
-    highlight: {
-        fontWeight: '700',
-    },
-    tinyLogo: {
-        width: 50,
-        height: 50,
-    },
-    container: {
-        ...StyleSheet.absoluteFillObject,
-        flex: 1, //the container will fill the whole screen.
-        justifyContent: "flex-end",
-        alignItems: "center",
-    },
-    map: {
-        ...StyleSheet.absoluteFillObject,
-    },
-
+    list: {
+        position: "absolute",
+        height: 200,
+        bottom: 0,
+    }
 });
 
 type ConstructionListProps = {
@@ -68,28 +45,27 @@ type ConstructionListProps = {
 export function ConstructionList({ locations, onClick }: ConstructionListProps) {
     return (
         <View
-            style={{
-                position: "absolute",
-                height: 200,
-                bottom: 0,
-            }}
+            style={styles.list}
         >
             <FlatList
                 data={locations}
-                horizontal={true}
+                horizontal
+                snapToAlignment="center"
+                decelerationRate={0}
+                pagingEnabled
                 renderItem={function ({ item }) {
                     return (
                         <TouchableOpacity onPress={() => onClick(item)}>
                             <ConstructionItem
-                    key={item.address}
-                    title={item.displayName}
-                    imgURL={item.displayImage}
-                    address={item.address}
-                />
-                </TouchableOpacity>
+                                key={item.address}
+                                title={item.displayName}
+                                imgURL={item.displayImage}
+                                address={item.address}
+                            />
+                        </TouchableOpacity>
                     )
                 }
-            }
+                }
                 keyExtractor={item => item.displayName}
             >
             </FlatList>
