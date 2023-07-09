@@ -330,6 +330,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  snapping_page_scroll:
+    dependency: "direct main"
+    description:
+      name: snapping_page_scroll
+      sha256: "8ef3b6d6e492e8c9cfde5baa8ab3ffd31b4058789e62103577c4fc139bb9cdf4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   source_span:
     dependency: transitive
     description:

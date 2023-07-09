@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'location.dart';
 import 'list_view.dart';
 import 'package:flutter/material.dart';
@@ -67,8 +69,11 @@ class ConstructionMapState extends State<ConstructionMap> {
     }
 
     void fetchLocations() async {
-      final response =
-          await http.get(Uri.parse('http://10.0.2.2:3000/locations'));
+      var url = "http://10.0.2.2:3000/locations";
+      if (Platform.isIOS) {
+        url = "http://localhost:3000/locations";
+      }
+      final response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200) {
         // If the server did return a 200 OK response,

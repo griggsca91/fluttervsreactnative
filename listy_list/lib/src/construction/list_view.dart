@@ -1,9 +1,10 @@
 import 'location.dart';
 import 'package:flutter/material.dart';
-import 'package:scroll_snap_list/scroll_snap_list.dart';
+import 'dart:developer' as developer;
+import 'package:snapping_page_scroll/snapping_page_scroll.dart';
 
 class ConstructionList extends StatelessWidget {
-  const ConstructionList({
+  ConstructionList({
     super.key,
     required this.constructionSites,
     required this.onItemFocus,
@@ -14,24 +15,23 @@ class ConstructionList extends StatelessWidget {
   final void Function(Location) onItemFocus;
   final void Function(Location) onItemClick;
 
-  void _onItemFocus(int index) {
-    onItemFocus(constructionSites[index]);
-  }
+  final controller = PageController(
+    viewportFraction: 0.75,
+  );
 
   @override
   Widget build(BuildContext context) {
-    return ScrollSnapList(
-      onItemFocus: _onItemFocus,
-      itemSize: 350 + 5 + 5,
-      itemBuilder: (BuildContext context, int index) {
-        return ConstructionCard(
-          location: constructionSites[index],
-          onItemClick: onItemClick,
-        );
-      },
-      itemCount: constructionSites.length,
-      reverse: true,
-    );
+    double width = MediaQuery.of(context).size.width;
+    developer.log("width: $width");
+    return SnappingPageScroll(
+        onPageChanged: (i) => onItemFocus(constructionSites[i]),
+        controller: controller,
+        children: constructionSites
+            .map((e) => ConstructionCard(
+                  location: e,
+                  onItemClick: onItemClick,
+                ))
+            .toList());
   }
 }
 
